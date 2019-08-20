@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-dnsproxy" version="1.0.1">
+    <name>DNSProxy</name>
+
+    <description>Android Cordova plugin that allows users to modify DNS server settings</description>
+    <license>GPLv3</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/RoqosInc/cordova-plugin-dnsproxy.git</repo>
+    <issue>https://github.com/RoqosInc/cordova-plugin-dnsproxy/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=6.5.0"/>
+    </engines>
+  
+    <js-module src="www/dnsproxy.js" name="dnsProxy">
+        <clobbers target="window.plugins.dnsProxy" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DnsProxy">
+                <param name="android-package" value="com.roqos.cordova.plugin.DnsProxy"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service
+                android:name="com.roqos.cordova.plugin.RoqosVPNService"
+                android:permission="android.permission.BIND_VPN_SERVICE">
+                <intent-filter>
+                    <action android:name="android.net.VpnService"/>
+                </intent-filter>
+            </service>
+            <receiver
+                android:name="com.roqos.cordova.plugin.OnBootReceiver"
+                android:enabled="true"
+                android:exported="true" >
+                <intent-filter android:priority="999">
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </receiver>
+
+            <receiver
+                android:name="com.roqos.cordova.plugin.StatusBarBroadcastReceiver"
+                android:enabled="true" >
+                <intent-filter>
+                    <action android:name="com.roqos.cordova.plugin.StatusBarBroadcastReceiver.STATUS_BAR_BTN_DEACTIVATE_CLICK_ACTION" />
+                </intent-filter>
+            </receiver>
+        </config-file>        
+
+        <source-file src="src/android/DnsProxy.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/AbstractDNSServer.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/Configurations.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/CustomDNSServer.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/DNSServer.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/DNSServerHelper.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/Provider.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/Roqos.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/RoqosVPNService.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/Rule.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/RuleResolver.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/UdpProvider.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/OnBootReceiver.java" target-dir="src/com/roqos/cordova/plugin" />
+        <source-file src="src/android/StatusBarBroadcastReceiver.java" target-dir="src/com/roqos/cordova/plugin" />
+
+        <resource-file src="src/android/res/drawable/icon.png" target="res/drawable/icon.png" />
+
+        <framework src="org.pcap4j:pcap4j-core:1.7.3" />
+        <framework src="org.pcap4j:pcap4j-packetfactory-static:1.7.3" />
+        <framework src="de.measite.minidns:minidns-core:0.2.4" />
+        <framework src="com.google.code.gson:gson:2.8.2" />
+        <framework src="com.android.support:support-v4:26+" />
+
+    </platform>
+</plugin>

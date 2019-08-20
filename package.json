@@ -1,0 +1,58 @@
+{
+  "_from": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+  "_id": "cordova-plugin-dnsproxy@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha1-jAaHSXBaCT/OK4udZ+F+fqSiQ8c=",
+  "_location": "/cordova-plugin-dnsproxy",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+    "rawSpec": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+    "saveSpec": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+    "fetchSpec": "https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+    "gitCommittish": "master"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git#8f98f81ac6ed3c6fb9f3f7c75ea939987be65f14",
+  "_spec": "git+https://github.com/n-o-kh/cordova-plugin-dnsproxy.git",
+  "_where": "C:\\Users\\ASUS-13\\n-o\\nodns",
+  "author": {
+    "name": "Roqos",
+    "email": "admin@roqos.com"
+  },
+  "bugs": {
+    "url": "https://github.com/RoqosInc/cordova-plugin-dnsproxy/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-dnsproxy",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Android Cordova plugin that allows users to modify DNS server settings",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.5.0"
+    }
+  ],
+  "homepage": "https://github.com/RoqosInc/cordova-plugin-dnsproxy",
+  "keywords": [
+    "dnsproxy",
+    "dns",
+    "cordova-android"
+  ],
+  "license": "GPLv3",
+  "name": "cordova-plugin-dnsproxy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoqosInc/cordova-plugin-dnsproxy.git"
+  },
+  "version": "1.0.1"
+}
